@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Simple MOOC - Uma simples plataforma de ensino a distância" />
+    <title>SOT</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link rel="stylesheet" href="{% static '/css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/all.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/adminlte.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/summernote-bs4.css' %}" />
+
+
+
+<body>
+
+    <div class="header">
+        <div class="pure-menu pure-menu-open pure-menu-fixed pure-menu-horizontal">
+            <a class="pure-menu-heading" href="">SS</a>
+
+        </div>
+    </div>
+    <div class="content">
+   {% block content %} {% endblock %}
+    <div class="footer">
+        Sistema de Solicitação
+    </div>
+</div>
+<script src="http://yui.yahooapis.com/3.12.0/build/yui/yui-min.js"></script>
+</body>
+ <script src="{% static '/js/adminlte.min.js' %}"></script>
+<script src="{% static '/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static '/js/demo.js' %}"></script>
+<script src="{% static '/js/jquery.min.js' %}"></script>
+<script src="{% static '/js/summernote-bs4.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="{% static '/js/jquery.inputmask.bundle.min.js' %}"></script>
+<script src="{% static '/js/moment.min.js' %}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+</html>

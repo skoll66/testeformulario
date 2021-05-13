@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content%}
+    <div class="splash">
+        <div class="pure-g-r">
+            <div class="pure-u-1">
+                <div class="l-box splash-text">
+                    <h1 class="splash-head">
+                        Sistema de Solicitação
+                    </h1>
+                    <h2 class="splash-subhead">
+                       Bla bla bla bla bla bla bla bla
+                    </h2>
+                    <p>
+                        <a href="#" class="pure-button primary-button">Saiba mais</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="pure-g-r content-ribbon">
+            <div class="pure-u-2-3">
+                <div class="l-box">
+                    <h4 class="content-subhead">Solicitações</h4>
+                    <h3>Faça sua Solicitação</h3>
+                </div>
+                <div class="card card-info">
+                  <div class="card-header">
+                    <h3 class="card-title">Insira suas Informações</h3>
+                  </div>
+                <div class="card-body">
+                 <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Nome</span>
+                  </div>
+                  <input id="IdNome"type="text" class="form-control" placeholder="Nome">
+                </div>
+                 <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Sobrenome</span>
+                  </div>
+                  <input id="IdSNome"type="text" class="form-control" placeholder="Sobrenome">
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Renda</span>
+                  </div>
+                  <input id="Salario"type="number" step="0.01" class="form-control" placeholder="Insira sua Renda">
+                </div>
+                    <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Data Nascimento</span>
+                  </div>
+                  <input id="Data Nascimento"type="date"  class="form-control" >
+                </div>
+               </div>
+            </div>
+
+            </div>
+        </div>
+    </div>
+                 <div class="card-footer">
+                  <button id="enviar" class="btn btn-info" >Enviar</button>
+                  <button id="cancelar" class="btn btn-default float-right">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="{% static '/js/jquery.min.js' %}"></script>
+<script src="{% static '/js/summernote-bs4.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="{% static '/js/jquery.inputmask.bundle.min.js' %}"></script>
+<script src="{% static '/js/moment.min.js' %}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.1/jquery.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#myForm input[type=radio]').change(function() {
+    var select = this.value;
+      if(select == '2'){
+         $("#Cadastrocompleto").show(" ");
+      }
+      else{
+        $("#Cadastrocompleto").hide(" ");
+      }
+    });
+ });
+
+</script>
+<script>
+    var verifyRecaptchaCallback = function(response) {
+        $("#enviar").show(" ");
+      };
+</script>
+<script>
+    $('#enviar').click(function(){
+        console.log('teste');
+        var Cpf = $("#IdCPF").val();
+        var Nome = $("#IdNome").val();
+        var Sobrenome = $("#IdSNome").val();
+        var Email =$("#Idemail").val();
+        var Celular =$("#Idcelphone").val();
+        var title =$("#Idtitle").val();
+        var texto =$("#Idcomponete").val();
+        data = {           "Cpf": Cpf,
+                          "Nome":Nome,
+                          'Sobrenome':Sobrenome,
+                          'Email':Email,
+                          'Celular':Celular,
+                          'title':title,
+                          'texto':texto, }
+        console.log(data);
+        $.ajax({
+               type: "GET",
+               url: "core/ajaxPegaDados",
+               dataType:"json",
+               data: data,
+               success: function(data)
+               {
+                      console.log('O dado foi para o backend',data);
+
+
+               },
+                error: function (request, status, erro) {
+                alert("Problema ocorrido: " + status + "\nDescição: " + erro);
+                //Abaixo está listando os header do conteudo que você requisitou, só para confirmar se você setou os header e dataType corretos
+                alert("Informações da requisição: \n" + request.getAllResponseHeaders());
+                },
+
+        });
+
+});
+
+</script>
+{% endblock %}
